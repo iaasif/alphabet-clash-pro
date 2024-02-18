@@ -1,4 +1,8 @@
-
+function getTextElementValueById(elementId){
+    const element = document.getElementById(elementId);
+    const elementValueText = element.innerText;
+    const value = 
+}
 
 function getARandomAlphabet() {
     const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
@@ -53,10 +57,22 @@ function handleKeyboardKeyUpEvent(event) {
         // update score 
         // start a new round
 
-        const currentScoreElement = document.getElementById('current-score')
+        const currentScoreElement = document.getElementById('current-score');
+        const currentScoreText = currentScoreElement.innerText;
+        const currentScore = parseInt(currentScoreText);
+        const newScore = currentScore + 1;
+        currentScoreElement.innerText = newScore;
 
         removeBackgroundById(expectedAlphabet);
         continueGame();
+    }
+
+    else {
+        const currentLifeElement = document.getElementById('current-life');
+        const currentLifetext = currentLifeElement.innerText;
+        const currentLife = parseInt(currentLifetext);
+        const newLife = currentLife - 1;
+        currentLifeElement.innerText = newLife;
     }
 }
 
