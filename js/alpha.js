@@ -30,14 +30,49 @@ function play() {
 
 }
 
+function removeBackgroundById(elementId) {
+    const element = document.getElementById(elementId);
+    element.classList.remove('bg-orange-400');
+}
+
+
+function handleKeyboardKeyUpEvent(event) {
+
+    const playerPressed = event.key
+    // console.log('player pressed ', playerPressed);
+
+
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    const currentAlphabet = currentAlphabetElement.innerText;
+    const expectedAlphabet = currentAlphabet.toLowerCase();
+    console.log(playerPressed, expectedAlphabet);
+
+    if (playerPressed == expectedAlphabet) {
+        console.log("you win ");
+
+        // update score 
+        // start a new round
+
+        const currentScoreElement = document.getElementById('current-score')
+
+        removeBackgroundById(expectedAlphabet);
+        continueGame();
+    }
+}
+
+
+document.addEventListener('keyup', handleKeyboardKeyUpEvent);
+
+
+
 function continueGame() {
     const alphabet = getARandomAlphabet()
-    console.log('your new alpha is' + alphabet);
+    console.log('your new alpha is: ' + alphabet);
 
     const currentAlphabetElement = document.getElementById('current-alphabet');
     currentAlphabetElement.innerText = alphabet
 
-    setBackgroundColorById(alphabet); 
+    setBackgroundColorById(alphabet);
 }
 
 function setBackgroundColorById(elemnetId) {
